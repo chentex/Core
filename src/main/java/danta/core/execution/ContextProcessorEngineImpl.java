@@ -58,7 +58,7 @@ public class ContextProcessorEngineImpl
             throws AcceptsException, ProcessException {
         List<String> currentProcessorChain = Collections.synchronizedList(new ArrayList<>());
         for (List<ContextProcessor> processorsSamePriority : contextProcessors.values()) {
-            processorsSamePriority.parallelStream().forEach(processor -> {
+            processorsSamePriority.forEach(processor -> {
                 try {
                     if (processor.accepts(executionContext)) {
                         processor.process(executionContext, contentModel);
